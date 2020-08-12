@@ -21,7 +21,7 @@ const Earth = () => {
 
   return (
     <mesh scale={[A / radius, B / radius, A / radius]}>
-      <sphereGeometry attach="geometry" args={[2, 24, 32]} />
+      <sphereGeometry attach="geometry" args={[2, 32, 24]} />
       <meshPhongMaterial
         attach="material"
         map={earthTexture}
@@ -33,7 +33,7 @@ const Earth = () => {
 
 export default function App() {
   return (
-    <Canvas>
+    <Canvas id={"canvas"}>
       <ambientLight />
       <Suspense fallback={<Fallback />}>
         <Earth />
