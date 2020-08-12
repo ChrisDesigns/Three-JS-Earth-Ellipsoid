@@ -14,17 +14,19 @@ const Earth = () => {
   const B = A * (1 - FE); // polar radius
   const radius = (2 * A + B) / 3; // mean Earth radi
 
-  const corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-
-  const texture = useTextureLoader(
-    corsAnywhere +
-      "https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74142/world.200409.3x5400x2700.jpg"
-  );
+  const [earthTexture, normalTexture] = useTextureLoader([
+    "earth_atmos_2048.jpg",
+    "earth_normal_2048.jpg"
+  ]);
 
   return (
     <mesh scale={[A / radius, B / radius, A / radius]}>
-      <sphereGeometry attach="geometry" args={[2, 12, 16]} />
-      <meshStandardMaterial attach="material" map={texture} />
+      <sphereGeometry attach="geometry" args={[2, 24, 32]} />
+      <meshPhongMaterial
+        attach="material"
+        map={earthTexture}
+        normalMap={normalTexture}
+      />
     </mesh>
   );
 };
